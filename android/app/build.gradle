@@ -37,6 +37,19 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+
+        applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+        def project = "Notes"
+        // def buildTypes = variant.buildType.name
+        def versionName = variant.versionName
+        // def versionCode = variant.versionCode
+        def date = new Date().format("yyyyMMdd_HHmm")
+        // def newApkName = "${project}_${buildType}_${versionName}_${versionCode}_${date}.apk"
+        def newApkName = "${project}_v${versionName}_${date}.apk"
+        output.outputFileName = newApkName
+        }
+        }
 }
 
 flutter {
